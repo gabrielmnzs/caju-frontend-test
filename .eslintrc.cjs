@@ -1,4 +1,7 @@
 module.exports = {
+  env: {
+    node: true
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -17,6 +20,7 @@ module.exports = {
         paths: ['src'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
+      typescript: {}
     },
   },
   rules: {
