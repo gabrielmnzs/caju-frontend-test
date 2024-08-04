@@ -20,7 +20,7 @@ interface RegistrationCardProps {
   onUpdate: () => void;
 }
 
-const RegistrationCard = ({ data, onUpdate }: RegistrationCardProps) => {
+export const RegistrationCard = ({ data, onUpdate }: RegistrationCardProps) => {
   const { setLoading } = useLoader();
   const { openModal } = useModal();
 
@@ -75,7 +75,7 @@ const RegistrationCard = ({ data, onUpdate }: RegistrationCardProps) => {
   };
 
   return (
-    <S.Card>
+    <S.Card data-testid='registration-card'>
       <S.IconAndText>
         <HiOutlineUser />
         <h3>{data.employeeName}</h3>
@@ -129,6 +129,7 @@ const RegistrationCard = ({ data, onUpdate }: RegistrationCardProps) => {
         </S.ContainerButtons>
 
         <IconButton
+          aria-label='delete-button'
           onClick={() =>
             openModal(Action.DELETE, () => handleRemoveRegistration(data))
           }
@@ -139,5 +140,3 @@ const RegistrationCard = ({ data, onUpdate }: RegistrationCardProps) => {
     </S.Card>
   );
 };
-
-export default RegistrationCard;

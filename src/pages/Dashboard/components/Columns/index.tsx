@@ -1,7 +1,7 @@
 import { Registration } from '~/types';
 import { Status } from '~/constants';
 
-import RegistrationCard from '../RegistrationCard';
+import { RegistrationCard } from '../RegistrationCard';
 import * as S from './styles';
 
 const allColumns = [
