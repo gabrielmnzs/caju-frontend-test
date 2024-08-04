@@ -1,41 +1,42 @@
-import { HiRefresh } from 'react-icons/hi';
-import { useHistory } from 'react-router-dom';
-import Button from '~/components/Buttons';
-import { IconButton } from '~/components/Buttons/IconButton';
-import TextField from '~/components/TextField';
-import routes from '~/router/routes';
-import * as S from './styles';
-import { useState } from 'react';
-export const SearchBar = ({ onSearch }: any) => {
-  const [searchValue, setSearchValue] = useState('');
-  const history = useHistory();
+import { useState, forwardRef, useImperativeHandle } from 'react';
 
-  const handleSearchChange = (e: any) => {
-    setSearchValue(e.target.value.toLowerCase());
+import { cpf } from '~/utils/formatters/cpf';
+
+import TextField from '~/components/TextField';
+import * as S from './styles';
+
+interface SearchBarProps {
+  onSearch: (value: string) => void;
+}
+
+export const SearchBar = forwardRef(({ onSearch }: SearchBarProps, ref) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value.toLowerCase());
   };
 
   const handleSearchKeyUp = () => {
     onSearch(searchValue);
   };
 
-  const goToNewAdmissionPage = () => {
-    history.push(routes.newUser);
-  };
+  useImperativeHandle(ref, () => ({
+    clearSearch() {
+      setSearchValue('');
+    },
+  }));
 
   return (
     <S.Container>
       <TextField
         placeholder='Digite um CPF válido'
-        value={searchValue}
+        value={searchValue ? cpf(searchValue) : ''}
+        maxLength={14}
         onChange={handleSearchChange}
         onKeyUp={handleSearchKeyUp}
       />
-      <S.Actions>
-        <IconButton aria-label='refetch'>
-          <HiRefresh />
-        </IconButton>
-        <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>
-      </S.Actions>
     </S.Container>
   );
-};
+});
+
+SearchBar.displayName = 'SearchBar';
