@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "vite --port 3000",
     "init:db": "json-server -p 8080 --watch db.json",
-    "build": "tsc && vite build",
     "test:dev": "jest --watch --verbose --no-cache",
     "cy:open": "cypress open",
+    "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "test": "jest --verbose --no-cache",
+    "build": "tsc && vite build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
