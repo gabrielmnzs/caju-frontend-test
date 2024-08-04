@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState, ReactNode } from 'react';
+
 import { Loader } from '~/components/Loader';
 
 interface LoaderContextProps {
