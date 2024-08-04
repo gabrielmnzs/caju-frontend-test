@@ -19,11 +19,11 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <S.Container
-      $size={$size}
+      type='button'
       color={color}
       $bgColor={$bgColor}
       $isVisible={$isVisible}
-      type='button'
+      $size={$size}
       {...props}
     >
       {children}

@@ -43,8 +43,9 @@ const smallStyles = css<ContainerProps>`
   ${defaultStyles};
 
   border-radius: 4px;
-  font-size: 12px;
   padding: 4px 16px;
+  height: 22px;
+  font-size: 12px;
   font-weight: 400;
 `;
 
