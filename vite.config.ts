@@ -2,8 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import eslintPlugin from '@nabla/vite-plugin-eslint';
+import dotenv from 'dotenv';
 
-// https://vitejs.dev/config/
+dotenv.config();
+
 export default defineConfig({
   plugins: [react(), eslintPlugin()],
   server: {
@@ -13,5 +15,8 @@ export default defineConfig({
     alias: {
       '~': path.resolve(__dirname, 'src'),
     },
+  },
+  define: {
+    'process.env': JSON.stringify(process.env),
   },
 });
