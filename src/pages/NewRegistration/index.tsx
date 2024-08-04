@@ -92,18 +92,21 @@ const NewRegistrationPage = () => {
         </IconButton>
         <form ref={formRef} onSubmit={handleSubmit(handleNewRegistration)}>
           <TextField
+            id='name'
             placeholder='Nome'
             label='Nome'
             {...register('name')}
             error={errors.name && errors.name.message}
           />
           <TextField
+            id='email'
             placeholder='Email'
             label='Email'
             {...register('email')}
             error={errors.email && errors.email.message}
           />
           <TextField
+            id='document'
             placeholder='CPF'
             label='CPF'
             {...register('document')}
@@ -111,6 +114,7 @@ const NewRegistrationPage = () => {
             error={errors.document && errors.document.message}
           />
           <TextField
+            id='date'
             label='Data de admissão'
             type='date'
             {...register('date')}
