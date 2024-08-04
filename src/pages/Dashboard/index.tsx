@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { HiRefresh } from 'react-icons/hi';
 
@@ -22,22 +22,27 @@ const DashboardPage = () => {
   const searchBarRef = useRef<{ clearSearch: () => void }>(null);
   const history = useHistory();
 
+  const fetchRegistrations = useCallback(async () => {
+    try {
+      setLoading(true);
+
+      const data = await RegistrationService.get();
+      setRegistrations(data);
+      setFilteredRegistrations(data);
+
+      if (searchBarRef.current) {
+        searchBarRef.current.clearSearch();
+      }
+    } catch (error) {
+      console.error('Erro ao buscar registros. ', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [setLoading, setRegistrations, setFilteredRegistrations]);
+
   useEffect(() => {
     fetchRegistrations();
-  }, []);
-
-  const fetchRegistrations = async () => {
-    setLoading(true);
-    const data = await RegistrationService.get();
-    setRegistrations(data);
-    setFilteredRegistrations(data);
-
-    if (searchBarRef.current) {
-      searchBarRef.current.clearSearch();
-    }
-
-    setLoading(false);
-  };
+  }, [fetchRegistrations]);
 
   const handleSearch = async (searchValue: string) => {
     if (isValidCPF(searchValue)) {
