@@ -15,7 +15,6 @@ export const getByCPF = async (cpf: string) => {
 };
 
 export const create = async (payload: Omit<Registration, 'id'>) => {
-  console.log(payload);
   const response = await api.post('/registrations', payload);
 
   return response.data;
