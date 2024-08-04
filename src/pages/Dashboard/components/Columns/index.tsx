@@ -15,7 +15,7 @@ interface ColumnsProps {
   onUpdate: () => void;
 }
 
-export const Collumns = ({ registrations, onUpdate }: ColumnsProps) => {
+export const Columns = ({ registrations, onUpdate }: ColumnsProps) => {
   return (
     <S.Container>
       {allColumns.map((collum) => {
