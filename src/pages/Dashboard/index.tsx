@@ -9,7 +9,7 @@ import { isValidCPF } from '~/utils/validations';
 import { useLoader } from '~/hooks/loader';
 
 import { Registration } from '~/types';
-import { Collumns, SearchBar } from './components';
+import { Columns, SearchBar } from './components';
 import { Button, IconButton } from '~/components/Buttons';
 
 import * as S from './styles';
@@ -78,7 +78,7 @@ const DashboardPage = () => {
           </Button>
         </S.Actions>
       </S.Menu>
-      <Collumns
+      <Columns
         registrations={filteredRegistrations}
         onUpdate={fetchRegistrations}
       />
