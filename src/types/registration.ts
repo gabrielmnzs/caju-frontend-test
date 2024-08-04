@@ -1,11 +1,9 @@
-export enum RegistrationStatus {
-  REVIEW = 'REVIEW',
-  APPROVED = 'APROVED',
-  REPROVED = 'REPROVED',
-}
+import { Status } from '~/constants';
+
+export type RegistrationStatus = keyof typeof Status;
 
 export type Registration = {
-  id: number;
+  id: string;
   email: string;
   employeeName: string;
   status: RegistrationStatus;
