@@ -1,14 +1,15 @@
-import Router from "~/router";
-import { Header } from "./components/Header";
+import Router from '~/router';
+import { Header } from './components/Header';
+import { Toast } from './components/Toast';
+import AppProvider from './hooks';
 
 function App() {
   return (
-    <>
-      <Header>
-        <h1>Caju Front Teste</h1>
-      </Header>
+    <AppProvider>
+      <Header />
       <Router />
-    </>
+      <Toast />
+    </AppProvider>
   );
 }
 
